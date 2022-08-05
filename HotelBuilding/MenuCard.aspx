@@ -17,7 +17,7 @@
 
             <asp:Label ID="Label1" runat="server" Text="ItemName"></asp:Label>
 &nbsp;
-            <asp:DropDownList ID="DropDownList1" runat="server" Height="18px">
+            <asp:DropDownList ID="ddlResult" runat="server" Height="18px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" DataTextField="ItemName" DataValueField="ItemId">
             </asp:DropDownList>
 &nbsp;<table class="auto-style1">
                 <tr>
