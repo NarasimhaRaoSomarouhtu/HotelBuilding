@@ -13,7 +13,12 @@ namespace HotelBuilding
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            LoginHyperLink.NavigateUrl = "Login";
+            var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+            if (!String.IsNullOrEmpty(returnUrl))
+            {
+                LoginHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
+            }
         }
 
         

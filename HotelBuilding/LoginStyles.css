@@ -18,6 +18,7 @@
 h3{
     color:brown
 }
-p{
-    color:chocolate
+.tagline, #RegisterHyperLink, #LoginHyperLink {
+    color: chocolate;
+    text-decoration: none;
 }

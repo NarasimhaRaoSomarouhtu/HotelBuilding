@@ -27,9 +27,9 @@
                     <div class="row">
                         <div class="col-lg-10 col-xl-7 mx-auto">
                             <h3 class="display-4">Welcome To Bhanu Hotel</h3>
-                            <p class="text-muted mb-4">Where The Quality Matters</p>
+                            <p class="tagline mb-4">Where The Quality Matters</p>
                             
-                                <div class="form-group mb-3">
+                                <div class="form-group">
                                     <asp:Label ID="Label2" runat="server" Text="UserName"></asp:Label>
                                     <asp:TextBox ID="txtUserName" CssClass="form-control" runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="reqName" ControlToValidate="txtUserName" ValidationGroup="LoginFrame" runat="server" ErrorMessage="This field is required"></asp:RequiredFieldValidator>
@@ -43,7 +43,9 @@
                                 </div>
                                 <div><asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Login" OnClick="Button1_Click1" /></div>
                                 
-                                
+                                <p class="mt-3">
+                                    <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register as a new user</asp:HyperLink>
+                                </p>
                                 
                                 <div class="text-center d-flex justify-content-between mt-4"></div>
                            
