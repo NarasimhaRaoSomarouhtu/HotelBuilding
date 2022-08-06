@@ -1,15 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="HotelBuilding.Register" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MenuCard.aspx.cs" Inherits="HotelBuilding.MenuCard" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="LoginStyles.css" />
 </head>
 <body>
-   <form id="form1" runat="server">
+    <form id="form1" runat="server">
         <div>
             <div class="container-fluid">
     <div class="row no-gutter">
@@ -25,7 +23,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-10 col-xl-7 mx-auto">
-                            <h3 class="display-4">Welcome To New User</h3>
+                            <h3 class="display-4">New User</h3>
                             <p class="text-muted mb-4">Please Enter Your Details</p>
                             
                                 <div class="form-group mb-3">
@@ -39,16 +37,8 @@
                                     <asp:Label ID="Label3" runat="server" Text="Password"></asp:Label>
                                     <asp:TextBox ID="txtPassword" CssClass="form-control" runat="server"></asp:TextBox>
                                     
-                                    
                                 </div>
-                            <div class="form-group mb-3">
-                                    <asp:Label ID="Label1" runat="server" Text="Contact"></asp:Label>
-                                    <asp:TextBox ID="txtContact" CssClass="form-control" runat="server"></asp:TextBox>
-                                    
-                                    
-                                </div>
-                            
-                                <div><asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Register" OnClick="Button1_Click1" /></div>
+                                <div><asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Login" OnClick="Button1_Click1" /></div>
                                 
                                 
                                 
@@ -69,7 +59,9 @@
 
         </div>
     </form>
-    
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+        <div>
+        </div>
+    </form>
 </body>
 </html>

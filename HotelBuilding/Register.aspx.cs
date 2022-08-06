@@ -16,7 +16,9 @@ namespace HotelBuilding
 
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        
+
+        protected void Button1_Click1(object sender, EventArgs e)
         {
             try
             {
@@ -24,21 +26,21 @@ namespace HotelBuilding
                 using (SqlConnection con = new SqlConnection(@"data source=.;initial catalog=Hotel;integrated security=True;"))
                 {
                     con.Open();
-                    string query = "insert into Login values(@username,@password)";
+                    string query = "insert into Login values(@username,@password,@Contact)";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("username", txtUserName.Text);
                     cmd.Parameters.AddWithValue("password", txtPassword.Text);
+                    cmd.Parameters.AddWithValue("Contact", txtContact.Text);
                     cmd.ExecuteNonQuery();
                     txtUserName.Text = "";
                     txtPassword.Text = "";
+                    txtContact.Text = "";
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-
         }
-        
     }
 }
