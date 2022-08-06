@@ -1,0 +1,23 @@
+﻿/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+.login,
+.image {
+    min-height: 100vh;
+}
+
+.bg-image {
+    background-image: url('https://thumbs.dreamstime.com/b/south-indian-platter-idli-dosa-vada-idli-dosa-vada-banana-leaf-south-indian-breakfast-tea-time-snack-171494106.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+h3{
+    color:brown
+}
+p{
+    color:chocolate
+}

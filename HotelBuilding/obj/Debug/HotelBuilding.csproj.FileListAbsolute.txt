@@ -1,3 +1,5 @@
+D:\Project\HotelBuilding\HotelBuilding\obj\Debug\HotelBuilding.csproj.AssemblyReference.cache
+D:\Project\HotelBuilding\HotelBuilding\obj\Debug\HotelBuilding.csproj.CoreCompileInputs.cache
 D:\Project\HotelBuilding\HotelBuilding\bin\HotelBuilding.dll.config
 D:\Project\HotelBuilding\HotelBuilding\bin\HotelBuilding.dll
 D:\Project\HotelBuilding\HotelBuilding\bin\HotelBuilding.pdb
@@ -71,8 +73,6 @@ D:\Project\HotelBuilding\HotelBuilding\bin\Newtonsoft.Json.xml
 D:\Project\HotelBuilding\HotelBuilding\bin\Antlr3.Runtime.pdb
 D:\Project\HotelBuilding\HotelBuilding\bin\Microsoft.AspNet.FriendlyUrls.xml
 D:\Project\HotelBuilding\HotelBuilding\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Project\HotelBuilding\HotelBuilding\obj\Debug\HotelBuilding.csproj.AssemblyReference.cache
-D:\Project\HotelBuilding\HotelBuilding\obj\Debug\HotelBuilding.csproj.CoreCompileInputs.cache
 D:\Project\HotelBuilding\HotelBuilding\obj\Debug\HotelBuilding.csproj.CopyComplete
 D:\Project\HotelBuilding\HotelBuilding\obj\Debug\HotelBuilding.dll
 D:\Project\HotelBuilding\HotelBuilding\obj\Debug\HotelBuilding.pdb

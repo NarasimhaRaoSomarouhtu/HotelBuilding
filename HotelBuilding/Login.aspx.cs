@@ -16,14 +16,16 @@ namespace HotelBuilding
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+       
+
+        protected void Button1_Click1(object sender, EventArgs e)
         {
             try
             {
                 using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
                 {
                     con.Open();
-                    string qry = "select * from Login where username='" +txtUserName.Text + "' and password='" + txtPassword.Text + "'";
+                    string qry = "select * from Login where username='" + txtUserName.Text + "' and password='" + txtPassword.Text + "'";
                     SqlCommand cmd = new SqlCommand(qry, con);
                     SqlDataReader sdr = cmd.ExecuteReader();
                     if (sdr.Read())

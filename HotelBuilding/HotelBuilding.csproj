@@ -151,7 +151,7 @@
       <LastGenOutput>Hotel.cs</LastGenOutput>
     </Content>
     <Content Include="Login.aspx" />
-    <Content Include="MenuCard.aspx" />
+    <Content Include="LoginStyles.css" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -242,13 +242,6 @@
     <Compile Include="Login.cs">
       <DependentUpon>Hotel.tt</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MenuCard.aspx.cs">
-      <DependentUpon>MenuCard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MenuCard.aspx.designer.cs">
-      <DependentUpon>MenuCard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
