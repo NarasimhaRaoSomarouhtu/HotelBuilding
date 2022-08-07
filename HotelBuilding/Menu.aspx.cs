@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace HotelBuilding
@@ -26,33 +27,25 @@ namespace HotelBuilding
                 Label OrderId = (Label)btn.Parent.FindControl("ItemIdLabel");
                 Label ItemName = (Label)btn.Parent.FindControl("ItemNameLabel");
                 Label ItemPrice = (Label)btn.Parent.FindControl("ItemPriceLabel");
-                
-                //not working
-                Control Quantity = (Control)btn.Parent.FindControl("Quantity");
-                
-                // check output window to see output
-                Debug.WriteLine(ItemName.Text);
-                string q = Request.Form["Quantity"];
-                Debug.WriteLine(q);
 
+                //not working
+                HtmlInputGenericControl Quantity = (HtmlInputGenericControl)btn.Parent.FindControl("Quantity");
+
+                // check output window to see output
 
                 using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
                 {
                     con.Open();
-                    string query = "insert into Orders values(@OrderId,@ItemName,@ItemPrice)";
+                    string query = "insert into Cart values(@OrderId,@ItemName,@ItemPrice,@Quantity)";
                     SqlCommand cmd = new SqlCommand(query, con);
-                   cmd.Parameters.AddWithValue("OrderId", OrderId.Text);
+                    cmd.Parameters.AddWithValue("OrderId", OrderId.Text);
                     cmd.Parameters.AddWithValue("ItemName", ItemName.Text);
                     cmd.Parameters.AddWithValue("ItemPrice", ItemPrice.Text);
-                   //cmd.Parameters.AddWithValue("Quantity", Quantity.);
-                    //cmd.Parameters.AddWithValue("Contact", txtPrice.Text);
+                    cmd.Parameters.AddWithValue("Quantity", Quantity.Value);
+
                     cmd.ExecuteNonQuery();
-                    Convert.ToInt32(OrderId.Text);
-                   ItemName.Text = "";
-                    Convert.ToInt32(ItemPrice.Text);
-                   // Convert.ToInt32(Quantity.);
                 }
-           }
+            }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);

@@ -5,17 +5,17 @@
         <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
             <AlternatingItemTemplate>
                 <tr style="">
-                    <td>
+                    <th scope="row">
                         <asp:Label ID="ItemIdLabel" runat="server" Text='<%# Eval("ItemId") %>' />
-                    </td>
+                    </th>
                     <td>
                         <asp:Label ID="ItemNameLabel" runat="server" Text='<%# Eval("ItemName") %>' />
                     </td>
                     <td>
                         <asp:Label ID="ItemPriceLabel" runat="server" Text='<%# Eval("ItemPrice") %>' />
                     </td>
-                    <td>
-                        <input id="Quantity" type="number" min="0" value="0" style="max-width:60px"/>
+                    <td runat="server">
+                        <input id="Quantity" runat="server" type="number" min="0" value="0" style="max-width:60px"/>
                     </td>
                     <td runat="server">
                         <asp:Button runat="server" OnClick="addToCart" Text="Add To Cart" CssClass="btn btn-success" />
@@ -65,19 +65,19 @@
             </InsertItemTemplate>
             <ItemTemplate>
                 <tr style="">
-                    <td>
+                    <th scope="row">
                         <asp:Label ID="ItemIdLabel" runat="server" Text='<%# Eval("ItemId") %>' />
-                    </td>
+                    </th>
                     <td>
                         <asp:Label ID="ItemNameLabel" runat="server" Text='<%# Eval("ItemName") %>' />
                     </td>
                     <td>
                         <asp:Label ID="ItemPriceLabel" runat="server" Text='<%# Eval("ItemPrice") %>' />
                     </td>
-                    <td>
+                    <td runat="server">
                         <input id="Quantity" runat="server" type="number" min="0" value="0" style="max-width:60px"/>
                     </td>
-
+                    
                     <td runat="server" onclick="addToCart">
                         <asp:Button runat="server" OnClick="addToCart" Text="Add To Cart" CssClass="btn btn-success" />
                     </td>
