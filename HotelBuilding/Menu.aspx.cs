@@ -19,8 +19,8 @@ namespace HotelBuilding
 
         protected void addToCart(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 Button btn = (Button)sender;
 
                 Label OrderId = (Label)btn.Parent.FindControl("ItemIdLabel");
@@ -36,27 +36,27 @@ namespace HotelBuilding
                 Debug.WriteLine(q);
 
 
-                //using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
-                //{
-                //    con.Open();
-                //    string query = "insert into Cart values(@OrderId,@ItemName,@ItemPrice,@Quantity)";
-                //    SqlCommand cmd = new SqlCommand(query, con);
-                //    cmd.Parameters.AddWithValue("OrderId", OrderId.Text);
-                //    cmd.Parameters.AddWithValue("ItemName", ItemName.Text);
-                //    cmd.Parameters.AddWithValue("ItemPrice", ItemPrice.Text);
-                //    cmd.Parameters.AddWithValue("Quantity", Quantity.Text);
-                //    //cmd.Parameters.AddWithValue("Contact", txtPrice.Text);
-                //    cmd.ExecuteNonQuery();
-                //    Convert.ToInt32(OrderId.Text);
-                //    ItemName.Text = "";
-                //    Convert.ToInt32(ItemPrice.Text);
-                //    Convert.ToInt32(Quantity.ToString);
-                //}
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw new Exception(ex.Message);
-            //}
+                using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
+                {
+                    con.Open();
+                    string query = "insert into Order1 values(@OrderId,@ItemName,@ItemPrice)";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                   cmd.Parameters.AddWithValue("OrderId", OrderId.Text);
+                    cmd.Parameters.AddWithValue("ItemName", ItemName.Text);
+                    cmd.Parameters.AddWithValue("ItemPrice", ItemPrice.Text);
+                   //cmd.Parameters.AddWithValue("Quantity", Quantity.);
+                    //cmd.Parameters.AddWithValue("Contact", txtPrice.Text);
+                    cmd.ExecuteNonQuery();
+                    Convert.ToInt32(OrderId.Text);
+                   ItemName.Text = "";
+                    Convert.ToInt32(ItemPrice.Text);
+                   // Convert.ToInt32(Quantity.);
+                }
+           }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

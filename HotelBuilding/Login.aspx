@@ -26,7 +26,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-10 col-xl-7 mx-auto">
-                            <h3 class="display-4">Welcome To Bhanu Hotel</h3>
+                            <h3 class="display-4">Welcome To TEAM-8 Hotel</h3>
                             <p class="tagline mb-4">Where The Quality Matters</p>
                             
                                 <div class="form-group">

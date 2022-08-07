@@ -18,7 +18,7 @@
                         <input id="Quantity" type="number" min="0" value="0" style="max-width:60px"/>
                     </td>
                     <td runat="server">
-                        <asp:Button runat="server" OnClick="addToCart" Text="Add To Cart" CssClass="btn btn-default" />
+                        <asp:Button runat="server" OnClick="addToCart" Text="Add To Cart" CssClass="btn btn-success" />
                     </td>
                 </tr>
             </AlternatingItemTemplate>
@@ -79,7 +79,7 @@
                     </td>
 
                     <td runat="server" onclick="addToCart">
-                        <asp:Button runat="server" OnClick="addToCart" Text="Add To Cart" CssClass="btn btn-default" />
+                        <asp:Button runat="server" OnClick="addToCart" Text="Add To Cart" CssClass="btn btn-success" />
                     </td>
                 </tr>
             </ItemTemplate>
