@@ -83,8 +83,8 @@
                     <thead class="thead-dark">
                         <tr style="">
                             <th scope="col">OrderId</th>
+                            <th scope="col">ItemName</th>
                             <th scope="col">ItemPrice</th>
-                            <th scope="col">Quantity</th>
                         </tr>
                     </thead>
                     <tr id="itemPlaceholder" runat="server">

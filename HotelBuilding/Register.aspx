@@ -51,7 +51,7 @@
                                 <div><asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Register" OnClick="Button1_Click1" /></div>
                                 
                                  <p class="mt-3">
-                                    <asp:HyperLink runat="server" ID="LoginHyperLink" ViewStateMode="Disabled">Return to Login</asp:HyperLink>
+                                    <asp:HyperLink runat="server" ID="LoginHyperLink" ViewStateMode="Disabled">Return to Login?</asp:HyperLink>
                                  </p>
                                 
                                 <div class="text-center d-flex justify-content-between mt-4"></div>
