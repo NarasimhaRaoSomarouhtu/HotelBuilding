@@ -149,8 +149,8 @@ E:\Projects\vsrepos\HotelBuilding\HotelBuilding\bin\Newtonsoft.Json.xml
 E:\Projects\vsrepos\HotelBuilding\HotelBuilding\bin\Antlr3.Runtime.pdb
 E:\Projects\vsrepos\HotelBuilding\HotelBuilding\bin\Microsoft.AspNet.FriendlyUrls.xml
 E:\Projects\vsrepos\HotelBuilding\HotelBuilding\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Projects\vsrepos\HotelBuilding\HotelBuilding\obj\Debug\HotelBuilding.csproj.AssemblyReference.cache
 E:\Projects\vsrepos\HotelBuilding\HotelBuilding\obj\Debug\HotelBuilding.csproj.CoreCompileInputs.cache
 E:\Projects\vsrepos\HotelBuilding\HotelBuilding\obj\Debug\HotelBuilding.csproj.CopyComplete
 E:\Projects\vsrepos\HotelBuilding\HotelBuilding\obj\Debug\HotelBuilding.dll
 E:\Projects\vsrepos\HotelBuilding\HotelBuilding\obj\Debug\HotelBuilding.pdb
+E:\Projects\vsrepos\HotelBuilding\HotelBuilding\obj\Debug\HotelBuilding.csproj.AssemblyReference.cache

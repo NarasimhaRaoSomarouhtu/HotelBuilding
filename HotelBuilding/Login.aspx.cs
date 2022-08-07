@@ -36,7 +36,7 @@ namespace HotelBuilding
                     if (sdr.Read())
                     {
                         Response.Write("<script>alert('login success'</script>");
-                        Response.Redirect("MenuCard.aspx");
+                        Response.Redirect("Menu.aspx");
                     }
                     else
                     {

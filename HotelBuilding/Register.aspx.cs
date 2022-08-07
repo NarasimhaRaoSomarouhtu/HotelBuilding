@@ -40,6 +40,8 @@ namespace HotelBuilding
                     txtUserName.Text = "";
                     txtPassword.Text = "";
                     txtContact.Text = "";
+
+                    Response.Redirect("Login.aspx");
                 }
             }
             catch (Exception ex)
