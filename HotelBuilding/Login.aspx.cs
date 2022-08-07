@@ -14,15 +14,13 @@ namespace HotelBuilding
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";
+            //Session["UserPresent"] = false;
             var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
             if (!String.IsNullOrEmpty(returnUrl))
             {
                 RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
             }
         }
-
-       
-
         protected void Button1_Click1(object sender, EventArgs e)
         {
             try
@@ -36,6 +34,7 @@ namespace HotelBuilding
                     if (sdr.Read())
                     {
                         Response.Write("<script>alert('login success'</script>");
+                        Session["UserPresent"] = true;
                         Response.Redirect("Menu.aspx");
                     }
                     else

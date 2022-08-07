@@ -120,7 +120,7 @@
         </asp:ListView>
     </p>
 
-    <div class="display-6" id="totalPriceLabel" runat="server"></div>
+    <div id="totalPriceLabel" runat="server"></div>
 
     <p>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HotelConnectionString %>" SelectCommand="SELECT * FROM [Cart]"></asp:SqlDataSource>

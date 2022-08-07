@@ -15,41 +15,75 @@ namespace HotelBuilding
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if((Boolean)Session["UserPresent"] != true)
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         protected void addToCart(object sender, EventArgs e)
         {
-            try
+            if ((Boolean)Session["UserPresent"] == true)
             {
-                Button btn = (Button)sender;
+                //try
+                //{
+                    Button btn = (Button)sender;
 
-                Label OrderId = (Label)btn.Parent.FindControl("ItemIdLabel");
-                Label ItemName = (Label)btn.Parent.FindControl("ItemNameLabel");
-                Label ItemPrice = (Label)btn.Parent.FindControl("ItemPriceLabel");
+                    Label OrderId = (Label)btn.Parent.FindControl("ItemIdLabel");
+                    Label ItemName = (Label)btn.Parent.FindControl("ItemNameLabel");
+                    Label ItemPrice = (Label)btn.Parent.FindControl("ItemPriceLabel");
 
-                //not working
-                HtmlInputGenericControl Quantity = (HtmlInputGenericControl)btn.Parent.FindControl("Quantity");
+                    //not working
+                    HtmlInputGenericControl Quantity = (HtmlInputGenericControl)btn.Parent.FindControl("Quantity");
 
-                // check output window to see output
+                    // check output window to see output
 
-                using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
-                {
-                    con.Open();
-                    string query = "insert into Cart values(@OrderId,@ItemName,@ItemPrice,@Quantity)";
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.Parameters.AddWithValue("OrderId", OrderId.Text);
-                    cmd.Parameters.AddWithValue("ItemName", ItemName.Text);
-                    cmd.Parameters.AddWithValue("ItemPrice", ItemPrice.Text);
-                    cmd.Parameters.AddWithValue("Quantity", Quantity.Value);
+                    using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
+                    {
+                        con.Open();
 
-                    cmd.ExecuteNonQuery();
-                }
+                        string qry = "select * from Cart where OrderId = @OrderId";
+                        SqlCommand command = new SqlCommand(qry, con);
+
+                        command.Parameters.AddWithValue("OrderId", OrderId.Text);
+
+                        SqlDataReader reader = command.ExecuteReader();
+
+
+                        if (reader.Read())
+                        {
+                            reader.Close();
+                            string updateQuery = "Update Cart Set Quantity = @Quantity where OrderId = @OrderId";
+                            SqlCommand updateCmd = new SqlCommand(updateQuery, con);
+                            updateCmd.Parameters.AddWithValue("Quantity", Quantity.Value);
+                            updateCmd.Parameters.AddWithValue("OrderId", OrderId.Text);
+
+                            updateCmd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            reader.Close();
+                            string insertQuery = "insert into Cart values(@OrderId,@ItemName,@ItemPrice,@Quantity)";
+                            SqlCommand insertCmd = new SqlCommand(insertQuery, con);
+                            insertCmd.Parameters.AddWithValue("OrderId", OrderId.Text);
+                            insertCmd.Parameters.AddWithValue("ItemName", ItemName.Text);
+                            insertCmd.Parameters.AddWithValue("ItemPrice", ItemPrice.Text);
+                            insertCmd.Parameters.AddWithValue("Quantity", Quantity.Value);
+
+                            insertCmd.ExecuteNonQuery();
+                        }
+                    }
+                //}
+                //catch (Exception ex)
+                //{
+                //    throw new Exception(ex.Message);
+                //}
             }
-            catch (Exception ex)
+            else
             {
-                throw new Exception(ex.Message);
+                Response.Redirect("Login.aspx");
             }
+            
         }
     }
 }

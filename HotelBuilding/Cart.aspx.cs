@@ -11,33 +11,35 @@ using System.Web.UI.WebControls;
 namespace HotelBuilding
 {
     public partial class Cart : System.Web.UI.Page
-    {
+    {   
         protected void Page_Load(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
+            if((Boolean)Session["UserPresent"] == true)
             {
-                //string TotalQry = "Select top 1 Sum(CAST(ItemPrice as int) * CAST(Quantity as int)) from Cart";
-
-                string TotalQry = "Select Sum(Cast(ItemPrice as int) * Cast(Quantity as int)) as Total from Cart;";
-
-                con.Open();
-
-                SqlCommand cmd = new SqlCommand(TotalQry, con);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                HtmlGenericControl div = ListView1.Parent.FindControl("totalPriceLabel") as HtmlGenericControl;
-
-                while (reader.Read())
+                using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
                 {
-                    div.InnerHtml = "Total Price : " + reader["Total"].ToString();
+                    string TotalQry = "Select Sum(Cast(ItemPrice as int) * Cast(Quantity as int)) as Total from Cart;";
+
+                    con.Open();
+
+                    SqlCommand cmd = new SqlCommand(TotalQry, con);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    HtmlGenericControl div = ListView1.Parent.FindControl("totalPriceLabel") as HtmlGenericControl;
+
+                    div.InnerHtml = "";
+
+                    while (reader.Read())
+                    {
+                        div.InnerHtml = "Total Price : " + reader["Total"].ToString();
+                    }
+
                 }
-
-                //Debug.WriteLine(ListView1.Parent.FindControl("totalPriceLabel").)
-
-
-                con.Close();
-
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
             }
 
         }
