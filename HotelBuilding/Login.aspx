@@ -44,7 +44,7 @@
                                 <div><asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Login" OnClick="Button1_Click1" /></div>
                                 
                                 <p class="mt-3">
-                                    <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register as a new user</asp:HyperLink>
+                                    <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register as a new user?</asp:HyperLink>
                                 </p>
                                 
                                 <div class="text-center d-flex justify-content-between mt-4"></div>

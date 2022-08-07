@@ -39,7 +39,7 @@ namespace HotelBuilding
                 using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
                 {
                     con.Open();
-                    string query = "insert into Order1 values(@OrderId,@ItemName,@ItemPrice)";
+                    string query = "insert into Orders values(@OrderId,@ItemName,@ItemPrice)";
                     SqlCommand cmd = new SqlCommand(query, con);
                    cmd.Parameters.AddWithValue("OrderId", OrderId.Text);
                     cmd.Parameters.AddWithValue("ItemName", ItemName.Text);

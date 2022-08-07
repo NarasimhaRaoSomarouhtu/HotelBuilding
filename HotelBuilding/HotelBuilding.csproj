@@ -154,6 +154,7 @@
     </Content>
     <Content Include="Login.aspx" />
     <Content Include="LoginStyles.css" />
+    <Content Include="Logout.aspx" />
     <Content Include="Menu.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -259,6 +260,13 @@
     <Compile Include="Login.cs">
       <DependentUpon>Hotel.tt</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menu.aspx.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
