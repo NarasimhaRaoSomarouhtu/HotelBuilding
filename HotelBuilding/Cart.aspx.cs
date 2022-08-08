@@ -28,11 +28,12 @@ namespace HotelBuilding
 
                     HtmlGenericControl div = ListView1.Parent.FindControl("totalPriceLabel") as HtmlGenericControl;
 
-                    div.InnerHtml = "";
-
-                    while (reader.Read())
+                    if (reader.Read())
                     {
-                        div.InnerHtml = "Total Price : " + reader["Total"].ToString();
+                        if(reader["Total"].ToString() != "")
+                        {
+                            div.InnerHtml = "Total Price : " + reader["Total"].ToString();
+                        }
                     }
 
                 }
@@ -62,6 +63,7 @@ namespace HotelBuilding
 
                 con.Close();
             }
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

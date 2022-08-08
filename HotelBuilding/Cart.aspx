@@ -92,9 +92,10 @@
                 <table id="itemPlaceholderContainer" class="table" runat="server" border="0" style="">
                     <thead class="thead-dark">
                         <tr style="">
-                            <th scope="col">OrderId</th>
-                            <th scope="col">ItemName</th>
-                            <th scope="col">ItemPrice</th>
+                            <th scope="col">S.No</th>
+                            <th scope="col">Item</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
                         </tr>
                     </thead>
                     <tr id="itemPlaceholder" runat="server">

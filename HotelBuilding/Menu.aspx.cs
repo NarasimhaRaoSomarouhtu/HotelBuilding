@@ -15,7 +15,7 @@ namespace HotelBuilding
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if((Boolean)Session["UserPresent"] != true)
+            if( Session != null && (Boolean)Session["UserPresent"] != true)
             {
                 Response.Redirect("Login.aspx");
             }
@@ -23,67 +23,51 @@ namespace HotelBuilding
 
         protected void addToCart(object sender, EventArgs e)
         {
-            if ((Boolean)Session["UserPresent"] == true)
+            Button btn = (Button)sender;
+
+            Label OrderId = (Label)btn.Parent.FindControl("ItemIdLabel");
+            Label ItemName = (Label)btn.Parent.FindControl("ItemNameLabel");
+            Label ItemPrice = (Label)btn.Parent.FindControl("ItemPriceLabel");
+
+            HtmlInputGenericControl Quantity = (HtmlInputGenericControl)btn.Parent.FindControl("Quantity");
+
+            using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
             {
-                //try
-                //{
-                    Button btn = (Button)sender;
+                con.Open();
 
-                    Label OrderId = (Label)btn.Parent.FindControl("ItemIdLabel");
-                    Label ItemName = (Label)btn.Parent.FindControl("ItemNameLabel");
-                    Label ItemPrice = (Label)btn.Parent.FindControl("ItemPriceLabel");
+                string qry = "select * from Cart where OrderId = @OrderId";
+                SqlCommand command = new SqlCommand(qry, con);
 
-                    //not working
-                    HtmlInputGenericControl Quantity = (HtmlInputGenericControl)btn.Parent.FindControl("Quantity");
+                command.Parameters.AddWithValue("OrderId", OrderId.Text);
 
-                    // check output window to see output
+                SqlDataReader reader = command.ExecuteReader();
 
-                    using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
+                if(Convert.ToInt32(Quantity.Value) > 0)
+                {
+                    if (reader.Read())
                     {
-                        con.Open();
+                        reader.Close();
+                        string updateQuery = "Update Cart Set Quantity = @Quantity where OrderId = @OrderId";
+                        SqlCommand updateCmd = new SqlCommand(updateQuery, con);
+                        updateCmd.Parameters.AddWithValue("Quantity", Quantity.Value);
+                        updateCmd.Parameters.AddWithValue("OrderId", OrderId.Text);
 
-                        string qry = "select * from Cart where OrderId = @OrderId";
-                        SqlCommand command = new SqlCommand(qry, con);
-
-                        command.Parameters.AddWithValue("OrderId", OrderId.Text);
-
-                        SqlDataReader reader = command.ExecuteReader();
-
-
-                        if (reader.Read())
-                        {
-                            reader.Close();
-                            string updateQuery = "Update Cart Set Quantity = @Quantity where OrderId = @OrderId";
-                            SqlCommand updateCmd = new SqlCommand(updateQuery, con);
-                            updateCmd.Parameters.AddWithValue("Quantity", Quantity.Value);
-                            updateCmd.Parameters.AddWithValue("OrderId", OrderId.Text);
-
-                            updateCmd.ExecuteNonQuery();
-                        }
-                        else
-                        {
-                            reader.Close();
-                            string insertQuery = "insert into Cart values(@OrderId,@ItemName,@ItemPrice,@Quantity)";
-                            SqlCommand insertCmd = new SqlCommand(insertQuery, con);
-                            insertCmd.Parameters.AddWithValue("OrderId", OrderId.Text);
-                            insertCmd.Parameters.AddWithValue("ItemName", ItemName.Text);
-                            insertCmd.Parameters.AddWithValue("ItemPrice", ItemPrice.Text);
-                            insertCmd.Parameters.AddWithValue("Quantity", Quantity.Value);
-
-                            insertCmd.ExecuteNonQuery();
-                        }
+                        updateCmd.ExecuteNonQuery();
                     }
-                //}
-                //catch (Exception ex)
-                //{
-                //    throw new Exception(ex.Message);
-                //}
+                    else
+                    {
+                        reader.Close();
+                        string insertQuery = "insert into Cart values(@OrderId,@ItemName,@ItemPrice,@Quantity)";
+                        SqlCommand insertCmd = new SqlCommand(insertQuery, con);
+                        insertCmd.Parameters.AddWithValue("OrderId", OrderId.Text);
+                        insertCmd.Parameters.AddWithValue("ItemName", ItemName.Text);
+                        insertCmd.Parameters.AddWithValue("ItemPrice", ItemPrice.Text);
+                        insertCmd.Parameters.AddWithValue("Quantity", Quantity.Value);
+
+                        insertCmd.ExecuteNonQuery();
+                    }
+                }
             }
-            else
-            {
-                Response.Redirect("Login.aspx");
-            }
-            
         }
     }
 }
