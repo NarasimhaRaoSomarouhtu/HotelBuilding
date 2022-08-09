@@ -1,12 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Menu.aspx.cs" Inherits="HotelBuilding.Menu" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../UserSite.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="HotelBuilding.Cart" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <p>
+        <h3 class="display-6">Cart Page</h3>
         <br />
         <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
             <AlternatingItemTemplate>
                 <tr style="">
                     <th scope="row">
-                        <asp:Label ID="ItemIdLabel" runat="server" Text='<%# Eval("ItemId") %>' />
+                        <asp:Label ID="OrderIdLabel" runat="server" Text='<%# Eval("OrderId") %>' />
                     </th>
                     <td>
                         <asp:Label ID="ItemNameLabel" runat="server" Text='<%# Eval("ItemName") %>' />
@@ -14,11 +14,11 @@
                     <td>
                         <asp:Label ID="ItemPriceLabel" runat="server" Text='<%# Eval("ItemPrice") %>' />
                     </td>
-                    <td runat="server">
-                        <input id="Quantity" runat="server" type="number" min="0" value="0" style="max-width:60px"/>
+                    <td>
+                        <asp:Label ID="QuantityLabel" runat="server" Text='<%# Eval("Quantity") %>' />
                     </td>
                     <td runat="server">
-                        <asp:Button runat="server" OnClick="addToCart" Text="Add To Cart" CssClass="btn btn-success" />
+                        <asp:Button runat="server" OnClick="removeFromCart" Text="Remove" CssClass="btn btn-danger" />
                     </td>
                 </tr>
             </AlternatingItemTemplate>
@@ -29,7 +29,7 @@
                         <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
                     </td>
                     <td>
-                        <asp:TextBox ID="ItemIdTextBox" runat="server" Text='<%# Bind("ItemId") %>' />
+                        <asp:TextBox ID="OrderIdTextBox" runat="server" Text='<%# Bind("OrderId") %>' />
                     </td>
                     <td>
                         <asp:TextBox ID="ItemNameTextBox" runat="server" Text='<%# Bind("ItemName") %>' />
@@ -37,12 +37,15 @@
                     <td>
                         <asp:TextBox ID="ItemPriceTextBox" runat="server" Text='<%# Bind("ItemPrice") %>' />
                     </td>
+                    <td>
+                        <asp:TextBox ID="QuantityTextBox" runat="server" Text='<%# Bind("Quantity") %>' />
+                    </td>
                 </tr>
             </EditItemTemplate>
             <EmptyDataTemplate>
                 <table runat="server" style="">
                     <tr>
-                        <td>No data was returned.</td>
+                        <td>Cart is Empty.</td>
                     </tr>
                 </table>
             </EmptyDataTemplate>
@@ -53,7 +56,7 @@
                         <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
                     </td>
                     <td>
-                        <asp:TextBox ID="ItemIdTextBox" runat="server" Text='<%# Bind("ItemId") %>' />
+                        <asp:TextBox ID="OrderIdTextBox" runat="server" Text='<%# Bind("OrderId") %>' />
                     </td>
                     <td>
                         <asp:TextBox ID="ItemNameTextBox" runat="server" Text='<%# Bind("ItemName") %>' />
@@ -61,12 +64,15 @@
                     <td>
                         <asp:TextBox ID="ItemPriceTextBox" runat="server" Text='<%# Bind("ItemPrice") %>' />
                     </td>
+                    <td>
+                        <asp:TextBox ID="QuantityTextBox" runat="server" Text='<%# Bind("Quantity") %>' />
+                    </td>
                 </tr>
             </InsertItemTemplate>
             <ItemTemplate>
                 <tr style="">
                     <th scope="row">
-                        <asp:Label ID="ItemIdLabel" runat="server" Text='<%# Eval("ItemId") %>' />
+                        <asp:Label ID="OrderIdLabel" runat="server" Text='<%# Eval("OrderId") %>' />
                     </th>
                     <td>
                         <asp:Label ID="ItemNameLabel" runat="server" Text='<%# Eval("ItemName") %>' />
@@ -74,17 +80,16 @@
                     <td>
                         <asp:Label ID="ItemPriceLabel" runat="server" Text='<%# Eval("ItemPrice") %>' />
                     </td>
-                    <td runat="server">
-                        <input id="Quantity" runat="server" type="number" min="0" value="0" style="max-width:60px"/>
+                    <td>
+                        <asp:Label ID="QuantityLabel" runat="server" Text='<%# Eval("Quantity") %>' />
                     </td>
-                    
-                    <td runat="server" onclick="addToCart">
-                        <asp:Button runat="server" OnClick="addToCart" Text="Add To Cart" CssClass="btn btn-success" />
+                    <td runat="server">
+                        <asp:Button runat="server" OnClick="removeFromCart" Text="Remove" CssClass="btn btn-danger" />
                     </td>
                 </tr>
             </ItemTemplate>
             <LayoutTemplate>
-                <table id="itemPlaceholderContainer" runat="server" class="table" border="0" style="">
+                <table id="itemPlaceholderContainer" class="table" runat="server" border="0" style="">
                     <thead class="thead-dark">
                         <tr style="">
                             <th scope="col">S.No</th>
@@ -100,7 +105,7 @@
             <SelectedItemTemplate>
                 <tr style="">
                     <td>
-                        <asp:Label ID="ItemIdLabel" runat="server" Text='<%# Eval("ItemId") %>' />
+                        <asp:Label ID="OrderIdLabel" runat="server" Text='<%# Eval("OrderId") %>' />
                     </td>
                     <td>
                         <asp:Label ID="ItemNameLabel" runat="server" Text='<%# Eval("ItemName") %>' />
@@ -108,10 +113,16 @@
                     <td>
                         <asp:Label ID="ItemPriceLabel" runat="server" Text='<%# Eval("ItemPrice") %>' />
                     </td>
+                    <td>
+                        <asp:Label ID="QuantityLabel" runat="server" Text='<%# Eval("Quantity") %>' />
+                    </td>
                 </tr>
             </SelectedItemTemplate>
         </asp:ListView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HotelConnectionString %>" SelectCommand="SELECT * FROM [Item]"></asp:SqlDataSource>
+
+    <div id="totalPriceLabel" runat="server"></div>
+
+    <p>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HotelConnectionString %>" SelectCommand="SELECT * FROM [Cart]"></asp:SqlDataSource>
     </p>
 </asp:Content>
-

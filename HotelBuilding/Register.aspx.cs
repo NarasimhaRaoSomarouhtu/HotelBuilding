@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.UI.HtmlControls;
+using System.Diagnostics;
 
 namespace HotelBuilding
 {
@@ -23,24 +25,29 @@ namespace HotelBuilding
 
         
 
-        protected void Button1_Click1(object sender, EventArgs e)
+        protected void RegisterUser(object sender, EventArgs e)
         {
+            Button registerButton = (Button)sender;
+
+            HtmlInputText username = (HtmlInputText)registerButton.Parent.FindControl("username");
+            HtmlInputPassword password = (HtmlInputPassword)registerButton.Parent.FindControl("password");
+            HtmlInputText contact = (HtmlInputText)registerButton.Parent.FindControl("contact");
+            HtmlSelect role = (HtmlSelect)registerButton.Parent.FindControl("role");
+
+            //Debug.WriteLine(role.Items[role.SelectedIndex].Text);
+
             try
             {
-
                 using (SqlConnection con = new SqlConnection(@"data source=.;initial catalog=Hotel;integrated security=True;"))
                 {
                     con.Open();
-                    string query = "insert into Login values(@username,@password,@Contact)";
+                    string query = "insert into Login values(@username,@password,@Contact,@Role)";
                     SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.Parameters.AddWithValue("username", txtUserName.Text);
-                    cmd.Parameters.AddWithValue("password", txtPassword.Text);
-                    cmd.Parameters.AddWithValue("Contact", txtContact.Text);
+                    cmd.Parameters.AddWithValue("username", username.Value);
+                    cmd.Parameters.AddWithValue("password", password.Value);
+                    cmd.Parameters.AddWithValue("Contact", contact.Value);
+                    cmd.Parameters.AddWithValue("Role", role.Items[role.SelectedIndex].Text);
                     cmd.ExecuteNonQuery();
-                    txtUserName.Text = "";
-                    txtPassword.Text = "";
-                    txtContact.Text = "";
-
                     //Response.Redirect("Login.aspx");
                 }
             }

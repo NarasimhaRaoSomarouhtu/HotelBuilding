@@ -10,12 +10,9 @@
     <link rel="stylesheet" href="LoginStyles.css" />
 </head>
 <body>
-    <form id="form1" runat="server">
         <div class="container-fluid">
             <div class="row">
-   
                 <div class="col bg-image"></div>
-
 
                 <!-- The content half -->
                 <div class="col bg-light">
@@ -27,37 +24,44 @@
                                 <div class="col-lg-10 col-xl-7 mx-auto">
                                     <h3 class="display-4">Welcome To TEAM-8 Hotel</h3>
                                     <p class="tagline mb-4">Where The Quality Matters</p>
-                            
-                                        <div class="form-group">
-                                            <asp:Label ID="Label2" runat="server" Text="UserName"></asp:Label>
-                                            <asp:TextBox ID="txtUserName" CssClass="form-control" runat="server"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="reqName" ControlToValidate="txtUserName" ValidationGroup="LoginFrame" runat="server" ErrorMessage="This field is required"></asp:RequiredFieldValidator>
-                                      
 
+                                    <form class="" runat="server">
+                                        <div class="">
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" runat="server" id="username" required="required" />
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <asp:Label ID="Label3" runat="server" Text="Password"></asp:Label>
-                                            <asp:TextBox ID="txtPassword" CssClass="form-control" runat="server"></asp:TextBox>
-                                    
+
+                                        <div class="">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" runat="server" class="form-control" id="password" required="required"/>
                                         </div>
-                                        <div><asp:Button ID="Button1" CssClass="btn btn-primary" runat="server" Text="Login" OnClick="Button1_Click1" /></div>
-                                
-                                        <p class="mt-3">
-                                            <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register as a new user?</asp:HyperLink>
-                                        </p>
-                                
-                                        <div class="text-center d-flex justify-content-between mt-4"></div>
-                           
+  
+                                        <div class="">
+                                        <label for="validationDefault04" class="form-label">Role</label>
+                                        <select class="form-select" runat="server" id="role" required="required">
+                                            <option selected="selected" disabled="disabled" value="">User/Admin</option>
+                                            <option>User</option>
+                                            <option>Admin</option>
+                                        </select>
+                                        </div>
+  
+                                        <div class="col-12 mt-2">
+                                            <asp:Button ID="loginButton" CssClass="btn btn-primary" runat="server" Text="Login" OnClick="loginUser" />
+                                        </div>
+                                    </form>
+
+                                    <p class="mt-3">
+                                       <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register as a new user?</asp:HyperLink>
+                                    </p> 
+
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div><!-- End -->
-
             </div>
         </div>
-    </form>
+
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>

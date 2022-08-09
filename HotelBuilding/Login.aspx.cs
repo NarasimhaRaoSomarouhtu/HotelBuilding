@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Web.UI.HtmlControls;
 
 namespace HotelBuilding
 {
@@ -21,21 +23,58 @@ namespace HotelBuilding
                 RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
             }
         }
-        protected void Button1_Click1(object sender, EventArgs e)
+        protected void loginUser(object sender, EventArgs e)
         {
+            Button loginButton = (Button)sender;
+
+            HtmlInputText username = (HtmlInputText)loginButton.Parent.FindControl("username");
+            HtmlInputPassword password = (HtmlInputPassword)loginButton.Parent.FindControl("password");
+            HtmlSelect role = (HtmlSelect)loginButton.Parent.FindControl("role");
+
             try
             {
                 using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
                 {
                     con.Open();
-                    string qry = "select * from Login where username='" + txtUserName.Text + "' and password='" + txtPassword.Text + "'";
-                    SqlCommand cmd = new SqlCommand(qry, con);
-                    SqlDataReader sdr = cmd.ExecuteReader();
-                    if (sdr.Read())
+                    string userCheck = "select * from Login where username=@username and password=@password";
+
+                    SqlCommand userCheckCmd = new SqlCommand(userCheck, con);
+
+                    userCheckCmd.Parameters.AddWithValue("username", username.Value);
+                    userCheckCmd.Parameters.AddWithValue("password", password.Value);
+
+                    SqlDataReader userCheckReader = userCheckCmd.ExecuteReader();
+
+                    if (userCheckReader.Read())
                     {
-                        Response.Write("<script>alert('login success'</script>");
-                        Session["UserPresent"] = true;
-                        Response.Redirect("Menu.aspx");
+                        userCheckReader.Close();
+
+                        string roleCheck = "select role from Login where username=@username";
+                        
+                        SqlCommand roleCheckCmd = new SqlCommand(roleCheck, con);
+
+                        roleCheckCmd.Parameters.AddWithValue("username", username.Value);
+
+                        SqlDataReader roleCheckReader = roleCheckCmd.ExecuteReader();
+
+                        if (roleCheckReader.Read())
+                        {
+                            string userRole = roleCheckReader["role"].ToString();
+
+                            if (userRole == role.Items[role.SelectedIndex].Text)
+                            {
+                                if (userRole == "User")
+                                {
+                                    Session["UserPresent"] = true;
+                                    Response.Redirect("User/UserMenu.aspx");
+                                }
+                                if (userRole == "Admin")
+                                {
+                                    Response.Redirect("Admin/AdminMenu.aspx");
+                                }
+                                Response.Write("<script>alert('login success'</script>");
+                            }
+                        }
                     }
                     else
                     {

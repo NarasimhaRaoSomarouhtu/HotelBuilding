@@ -113,7 +113,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Cart.aspx" />
+    <Content Include="Admin\AdminMenu.aspx" />
+    <Content Include="Admin\Orders.aspx" />
+    <Content Include="Admin\Users.aspx" />
+    <Content Include="User\Cart.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -130,28 +133,11 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="Hotel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Hotel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Hotel.edmx.diagram">
-      <DependentUpon>Hotel.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Hotel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Hotel.Context.cs</LastGenOutput>
-      <DependentUpon>Hotel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Hotel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Hotel.edmx</DependentUpon>
-      <LastGenOutput>Hotel.cs</LastGenOutput>
-    </Content>
     <Content Include="Login.aspx" />
     <Content Include="LoginStyles.css" />
     <Content Include="Logout.aspx" />
-    <Content Include="Menu.aspx" />
+    <Content Include="User\UserMenu.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -181,42 +167,52 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="Site.Master" />
+    <Content Include="UserSite.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
-    <Content Include="Site.Mobile.Master" />
+    <Content Include="UserSite.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AdminMenu.aspx.cs">
+      <DependentUpon>AdminMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminMenu.aspx.designer.cs">
+      <DependentUpon>AdminMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Orders.aspx.cs">
+      <DependentUpon>Orders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Orders.aspx.designer.cs">
+      <DependentUpon>Orders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Cart.aspx.cs">
+    <Compile Include="AdminSite.Master.cs">
+      <DependentUpon>AdminSite.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminSite.Master.designer.cs">
+      <DependentUpon>AdminSite.Master</DependentUpon>
+    </Compile>
+    <Compile Include="User\Cart.aspx.cs">
       <DependentUpon>Cart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Cart.aspx.designer.cs">
+    <Compile Include="User\Cart.aspx.designer.cs">
       <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Hotel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Hotel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Hotel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Hotel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Hotel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Hotel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Item.cs">
-      <DependentUpon>Hotel.tt</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -225,10 +221,6 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
-      <DependentUpon>Hotel.tt</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Logout.aspx.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -236,12 +228,12 @@
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Menu.aspx.cs">
-      <DependentUpon>Menu.aspx</DependentUpon>
+    <Compile Include="User\UserMenu.aspx.cs">
+      <DependentUpon>UserMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Menu.aspx.designer.cs">
-      <DependentUpon>Menu.aspx</DependentUpon>
+    <Compile Include="User\UserMenu.aspx.designer.cs">
+      <DependentUpon>UserMenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
@@ -251,19 +243,19 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
+    <Compile Include="UserSite.Master.cs">
+      <DependentUpon>UserSite.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
+    <Compile Include="UserSite.Master.designer.cs">
+      <DependentUpon>UserSite.Master</DependentUpon>
     </Compile>
-    <Compile Include="Site.Mobile.Master.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    <Compile Include="UserSite.Mobile.Master.cs">
+      <DependentUpon>UserSite.Mobile.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site.Mobile.Master.designer.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    <Compile Include="UserSite.Mobile.Master.designer.cs">
+      <DependentUpon>UserSite.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -280,6 +272,7 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="AdminSite.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -17,7 +17,7 @@ namespace HotelBuilding
         {
             if( Session != null && (Boolean)Session["UserPresent"] != true)
             {
-                Response.Redirect("Login.aspx");
+                Response.Redirect("../Login.aspx");
             }
         }
 

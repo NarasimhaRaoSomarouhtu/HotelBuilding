@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="HotelBuilding.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="UserSite.Master.cs" Inherits="HotelBuilding.SiteMaster" %>
 
 <!DOCTYPE html>
 
@@ -49,9 +49,9 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Menu">Menu</a></li>
-                        <li><a runat="server" href="~/Cart">Cart</a></li>
-                        <li><a runat="server" href="~/Logout">Logout</a></li>
+                        <li><a runat="server" href="~/User/UserMenu">Menu</a></li>
+                        <li><a runat="server" href="~/User/Cart">Cart</a></li>
+                        <li><a runat="server" href="Logout">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -61,7 +61,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - ASP.NET Hotel Application</p>
             </footer>
         </div>
     </form>
