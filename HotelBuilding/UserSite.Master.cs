@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace HotelBuilding
 {
-    public partial class SiteMaster : MasterPage
+    public partial class UserSiteMaster : MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -114,8 +114,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\AdminMenu.aspx" />
-    <Content Include="Admin\Orders.aspx" />
     <Content Include="Admin\Users.aspx" />
+    <Content Include="User\Bill.aspx" />
     <Content Include="User\Cart.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -181,13 +181,6 @@
     <Compile Include="Admin\AdminMenu.aspx.designer.cs">
       <DependentUpon>AdminMenu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Orders.aspx.cs">
-      <DependentUpon>Orders.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Orders.aspx.designer.cs">
-      <DependentUpon>Orders.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -203,6 +196,13 @@
     </Compile>
     <Compile Include="AdminSite.Master.designer.cs">
       <DependentUpon>AdminSite.Master</DependentUpon>
+    </Compile>
+    <Compile Include="User\Bill.aspx.cs">
+      <DependentUpon>Bill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\Bill.aspx.designer.cs">
+      <DependentUpon>Bill.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\Cart.aspx.cs">
       <DependentUpon>Cart.aspx</DependentUpon>

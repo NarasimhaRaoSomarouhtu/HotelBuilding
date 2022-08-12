@@ -36,7 +36,7 @@ namespace HotelBuilding
                 using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
                 {
                     con.Open();
-                    string userCheck = "select * from Login where username=@username and password=@password";
+                    string userCheck = "select * from Users where username=@username and password=@password";
 
                     SqlCommand userCheckCmd = new SqlCommand(userCheck, con);
 
@@ -49,7 +49,7 @@ namespace HotelBuilding
                     {
                         userCheckReader.Close();
 
-                        string roleCheck = "select role from Login where username=@username";
+                        string roleCheck = "select role from Users where username=@username";
                         
                         SqlCommand roleCheckCmd = new SqlCommand(roleCheck, con);
 
@@ -72,13 +72,15 @@ namespace HotelBuilding
                                 {
                                     Response.Redirect("Admin/AdminMenu.aspx");
                                 }
-                                Response.Write("<script>alert('login success'</script>");
+           
                             }
                         }
                     }
                     else
                     {
-                        Response.Redirect("Register.aspx");
+                        Label3.Visible =true ;
+                        Label3.Text = "Invalid User Credentials";
+                       Label3.ForeColor = System.Drawing.Color.Red;
 
                     }
                     con.Close();

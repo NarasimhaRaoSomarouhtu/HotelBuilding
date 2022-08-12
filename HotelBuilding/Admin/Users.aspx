@@ -83,7 +83,7 @@
     </asp:ListView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HotelConnectionString %>" SelectCommand=" select
   username, contact
-  from Login
+  from Users
   where role = 'User';"></asp:SqlDataSource>
 &nbsp;
 </asp:Content>

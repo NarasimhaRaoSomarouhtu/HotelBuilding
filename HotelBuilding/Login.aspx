@@ -35,6 +35,7 @@
                                         <label for="password" class="form-label">Password</label>
                                         <input type="password" runat="server" class="form-control" id="password" required="required"/>
                                         </div>
+
   
                                         <div class="">
                                         <label for="validationDefault04" class="form-label">Role</label>
@@ -44,11 +45,13 @@
                                             <option>Admin</option>
                                         </select>
                                         </div>
+
   
                                         <div class="col-12 mt-2">
                                             <asp:Button ID="loginButton" CssClass="btn btn-primary" runat="server" Text="Login" OnClick="loginUser" />
                                         </div>
                                     </form>
+                                   <asp:Label ID="Label3" runat="server" Text="Label" Visible="False"></asp:Label>
 
                                     <p class="mt-3">
                                        <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register as a new user?</asp:HyperLink>

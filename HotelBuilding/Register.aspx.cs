@@ -41,7 +41,7 @@ namespace HotelBuilding
                 using (SqlConnection con = new SqlConnection(@"data source=.;initial catalog=Hotel;integrated security=True;"))
                 {
                     con.Open();
-                    string query = "insert into Login values(@username,@password,@Contact,@Role)";
+                    string query = "insert into Users values(@username,@password,@Contact,@Role)";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("username", username.Value);
                     cmd.Parameters.AddWithValue("password", password.Value);
