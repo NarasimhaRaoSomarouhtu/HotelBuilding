@@ -74,7 +74,14 @@ namespace HotelBuilding
                                 }
            
                             }
+                            else
+                            {
+                                Label1.Visible = true;
+                                Label1.Text = "Invalid User ";
+                                Label1.ForeColor = System.Drawing.Color.Red;
+                            }
                         }
+                        
                     }
                     else
                     {
