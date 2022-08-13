@@ -54,6 +54,7 @@
                                         <asp:Button ID="registerButton" CssClass="btn btn-primary" runat="server" Text="Register" OnClick="RegisterUser" />
                                     </div>
                                 </form>
+                                 <asp:Label ID="Label3" runat="server" Text="Label" Visible="False"></asp:Label>
 
                                 <p class="mt-3">
                                     <asp:HyperLink runat="server" ID="LoginHyperLink" ViewStateMode="Disabled">Return to Login?</asp:HyperLink>
