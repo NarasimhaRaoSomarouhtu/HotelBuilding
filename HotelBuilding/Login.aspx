@@ -43,9 +43,7 @@
                                             <option selected="selected" disabled="disabled" value="">User/Admin</option>
                                             <option>User</option>
                                             <option>Admin</option>
-                                        </select>
-                                            <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
-                       
+                                        </select>                       
                                         </div>
 
 
@@ -54,7 +52,7 @@
                                             <asp:Button ID="loginButton" CssClass="btn btn-primary" runat="server" Text="Login" OnClick="loginUser" />
                                         </div>
                                     </form>
-                                   <asp:Label ID="Label3" runat="server" Text="Label" Visible="False"></asp:Label>
+                                   <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
 
                                     <p class="mt-3">
                                        <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Register as a new user?</asp:HyperLink>

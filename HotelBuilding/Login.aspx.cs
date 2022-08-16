@@ -80,7 +80,7 @@ namespace HotelBuilding
                             else
                             {
                                 Label1.Visible = true;
-                                Label1.Text = "Invalid User ";
+                                Label1.Text = "Invalid User Credentials";
                                 Label1.ForeColor = System.Drawing.Color.Red;
                             }
                         }
@@ -88,9 +88,9 @@ namespace HotelBuilding
                     }
                     else
                     {
-                        Label3.Visible =true ;
-                        Label3.Text = "Invalid User Credentials";
-                        Label3.ForeColor = System.Drawing.Color.Red;
+                        Label1.Visible =true ;
+                        Label1.Text = "Invalid User Credentials";
+                        Label1.ForeColor = System.Drawing.Color.Red;
 
                     }
                     con.Close();
