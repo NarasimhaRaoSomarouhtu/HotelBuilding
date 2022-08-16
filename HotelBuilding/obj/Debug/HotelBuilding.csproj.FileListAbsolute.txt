@@ -231,3 +231,4 @@ D:\Team8_Project\HotelBuilding\HotelBuilding\bin\roslyn\vbc.exe.config
 D:\Team8_Project\HotelBuilding\HotelBuilding\bin\roslyn\vbc.rsp
 D:\Team8_Project\HotelBuilding\HotelBuilding\bin\roslyn\VBCSCompiler.exe
 D:\Team8_Project\HotelBuilding\HotelBuilding\bin\roslyn\VBCSCompiler.exe.config
+E:\Projects\vsrepos\HotelBuilding\HotelBuilding\obj\Debug\HotelBuilding.csproj.AssemblyReference.cache

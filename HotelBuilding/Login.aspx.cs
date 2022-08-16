@@ -33,10 +33,10 @@ namespace HotelBuilding
 
             try
             {
-                using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
+                using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=HotelDb; integrated security=True;"))
                 {
                     con.Open();
-                    string userCheck = "select * from Users where username=@username and password=@password";
+                    string userCheck = "select * from Users where Username=@username and Password=@password";
 
                     SqlCommand userCheckCmd = new SqlCommand(userCheck, con);
 
@@ -49,7 +49,7 @@ namespace HotelBuilding
                     {
                         userCheckReader.Close();
 
-                        string roleCheck = "select role from Users where username=@username";
+                        string roleCheck = "select Role from Users where Username=@username";
                         
                         SqlCommand roleCheckCmd = new SqlCommand(roleCheck, con);
 
@@ -66,10 +66,13 @@ namespace HotelBuilding
                                 if (userRole == "User")
                                 {
                                     Session["UserPresent"] = true;
+                                    Session["Username"] = username.Value;
                                     Response.Redirect("User/UserMenu.aspx");
                                 }
                                 if (userRole == "Admin")
                                 {
+                                    Session["UserPresent"] = true;
+                                    Session["Username"] = username.Value;
                                     Response.Redirect("Admin/AdminMenu.aspx");
                                 }
            
@@ -87,7 +90,7 @@ namespace HotelBuilding
                     {
                         Label3.Visible =true ;
                         Label3.Text = "Invalid User Credentials";
-                       Label3.ForeColor = System.Drawing.Color.Red;
+                        Label3.ForeColor = System.Drawing.Color.Red;
 
                     }
                     con.Close();

@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-namespace HotelBuilding
+namespace HotelBuilding.User
 {
-    public partial class Menu : System.Web.UI.Page
+    public partial class UserMenu : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if( Session != null && (Boolean)Session["UserPresent"] != true)
+            if (Session != null && (Boolean)Session["UserPresent"] != true)
             {
                 Response.Redirect("../Login.aspx");
             }
@@ -25,43 +23,40 @@ namespace HotelBuilding
         {
             Button btn = (Button)sender;
 
-            Label OrderId = (Label)btn.Parent.FindControl("ItemIdLabel");
-            Label ItemName = (Label)btn.Parent.FindControl("ItemNameLabel");
-            Label ItemPrice = (Label)btn.Parent.FindControl("ItemPriceLabel");
+            Label ItemId = (Label)btn.Parent.FindControl("ItemIdLabel");
 
             HtmlInputGenericControl Quantity = (HtmlInputGenericControl)btn.Parent.FindControl("Quantity");
 
-            using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
+            using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=HotelDb; integrated security=True;"))
             {
                 con.Open();
 
-                string qry = "select * from Cart where OrderId = @OrderId";
+                string qry = "select * from Cart where ItemId = @ItemId";
                 SqlCommand command = new SqlCommand(qry, con);
 
-                command.Parameters.AddWithValue("OrderId", OrderId.Text);
+                command.Parameters.AddWithValue("ItemId", ItemId.Text);
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                if(Convert.ToInt32(Quantity.Value) > 0)
+                if (Convert.ToInt32(Quantity.Value) > 0)
                 {
                     if (reader.Read())
                     {
                         reader.Close();
-                        string updateQuery = "Update Cart Set Quantity = @Quantity where OrderId = @OrderId";
+                        string updateQuery = "Update Cart Set Quantity = @Quantity where ItemId = @ItemId";
                         SqlCommand updateCmd = new SqlCommand(updateQuery, con);
                         updateCmd.Parameters.AddWithValue("Quantity", Quantity.Value);
-                        updateCmd.Parameters.AddWithValue("OrderId", OrderId.Text);
+                        updateCmd.Parameters.AddWithValue("ItemId", ItemId.Text);
 
                         updateCmd.ExecuteNonQuery();
                     }
                     else
                     {
                         reader.Close();
-                        string insertQuery = "insert into Cart values(@OrderId,@ItemName,@ItemPrice,@Quantity)";
+                        string insertQuery = "insert into Cart values(@Username,@ItemId,@Quantity)";
                         SqlCommand insertCmd = new SqlCommand(insertQuery, con);
-                        insertCmd.Parameters.AddWithValue("OrderId", OrderId.Text);
-                        insertCmd.Parameters.AddWithValue("ItemName", ItemName.Text);
-                        insertCmd.Parameters.AddWithValue("ItemPrice", ItemPrice.Text);
+                        insertCmd.Parameters.AddWithValue("Username", Session["Username"].ToString());
+                        insertCmd.Parameters.AddWithValue("ItemId", ItemId.Text);
                         insertCmd.Parameters.AddWithValue("Quantity", Quantity.Value);
 
                         insertCmd.ExecuteNonQuery();

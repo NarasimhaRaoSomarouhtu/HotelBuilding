@@ -110,7 +110,7 @@
             </tr>
         </SelectedItemTemplate>
     </asp:ListView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:HotelConnectionString %>" DeleteCommand="DELETE FROM [Item] WHERE [ItemId] = @original_ItemId AND [ItemName] = @original_ItemName AND [ItemPrice] = @original_ItemPrice" InsertCommand="INSERT INTO [Item] ([ItemId], [ItemName], [ItemPrice]) VALUES (@ItemId, @ItemName, @ItemPrice)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Item]" UpdateCommand="UPDATE [Item] SET [ItemName] = @ItemName, [ItemPrice] = @ItemPrice WHERE [ItemId] = @original_ItemId AND [ItemName] = @original_ItemName AND [ItemPrice] = @original_ItemPrice">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:HotelDbConnectionString %>" DeleteCommand="DELETE FROM [Menu] WHERE [ItemId] = @original_ItemId AND [ItemName] = @original_ItemName AND [ItemPrice] = @original_ItemPrice" InsertCommand="INSERT INTO [Menu] ([ItemId], [ItemName], [ItemPrice]) VALUES (@ItemId, @ItemName, @ItemPrice)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Menu]" UpdateCommand="UPDATE [Menu] SET [ItemName] = @ItemName, [ItemPrice] = @ItemPrice WHERE [ItemId] = @original_ItemId AND [ItemName] = @original_ItemName AND [ItemPrice] = @original_ItemPrice">
         <DeleteParameters>
             <asp:Parameter Name="original_ItemId" Type="String" />
             <asp:Parameter Name="original_ItemName" Type="String" />

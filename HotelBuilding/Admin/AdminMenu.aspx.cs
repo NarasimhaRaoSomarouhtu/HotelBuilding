@@ -22,14 +22,14 @@ namespace HotelBuilding.Admin
 
         protected void DeleteItem(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=Hotel; integrated security=True;"))
+            using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=HotelDb; integrated security=True;"))
             {
                 Button btn = (Button)sender;
                 Label ItemId = (Label)btn.Parent.FindControl("ItemIdLabel");
 
                 con.Open();
 
-                string query = "delete from Item where ItemId=@ItemId";
+                string query = "delete from Menu where ItemId=@ItemId";
 
                 SqlCommand cmd = new SqlCommand(query, con);
 

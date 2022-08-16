@@ -51,7 +51,7 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/User/UserMenu">Menu</a></li>
                         <li><a runat="server" href="~/User/Cart">Cart</a></li>
-                        <li><a runat="server" href="~/User/Bill">Bill</a></li>
+                        <li><a runat="server" href="~/User/Bills">Bills</a></li>
                         <li><a runat="server" href="Logout">Logout</a></li>
                     </ul>
                 </div>

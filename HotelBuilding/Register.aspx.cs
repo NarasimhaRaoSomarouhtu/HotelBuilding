@@ -63,13 +63,13 @@ namespace HotelBuilding
                          //Response.Redirect("Login.aspx");
                      }
                  }*/
-                using (SqlConnection con = new SqlConnection(@"data source=.;initial catalog=Hotel;integrated security=True;"))
+                using (SqlConnection con = new SqlConnection(@"data source=.;initial catalog=HotelDb;integrated security=True;"))
                 {
                     con.Open();
 
                     
 
-                    using (SqlCommand cmd = new SqlCommand("select count(*) from [Users] where username = @username", con))
+                    using (SqlCommand cmd = new SqlCommand("select count(*) from [Users] where Username = @username", con))
                     {
                         cmd.Parameters.AddWithValue("username", username.Value);
                         int temp= Convert.ToInt32(cmd.ExecuteScalar().ToString());
@@ -85,7 +85,7 @@ namespace HotelBuilding
                         else
                         {
 
-                            string query = "insert into Users values(@username,@password,@Contact,@Role)";
+                            string query = "insert into Users values(@username,@password,@contact,@role)";
                             using (SqlCommand cd = new SqlCommand(query, con))
 
                             {
@@ -95,7 +95,9 @@ namespace HotelBuilding
                                 cd.Parameters.AddWithValue("role", role.Items[role.SelectedIndex].Text);
                                 cd.ExecuteNonQuery();
 
-                                
+                                Label3.Visible = true;
+                                Label3.Text = "Registration Successful";
+                                Label3.ForeColor = System.Drawing.Color.Green;
                             }
                         }
                     }

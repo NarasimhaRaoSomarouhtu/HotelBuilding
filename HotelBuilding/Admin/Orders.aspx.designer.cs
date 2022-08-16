@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HotelBuilding.User
+namespace HotelBuilding.Admin
 {
 
 
-    public partial class UserMenu
+    public partial class Orders
     {
 
         /// <summary>
