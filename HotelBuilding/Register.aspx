@@ -32,8 +32,8 @@
 
                                     <div class="">
                                     <label for="contact" class="form-label">Contact</label>
-                                    <input type="text" class="form-control" runat="server" id="contact" required="required" />
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Enter valid Phone number" BackColor="Red" ControlToValidate="contact" ValidationExpression="^[01]?[- .]?(\([2-9]\d{2}\)|[2-9]\d{2})[- .]?\d{3}[- .]?\d{4}$" ></asp:RegularExpressionValidator> 
+                                    <input type="text" class="form-control" runat="server" id="contact"/>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Enter valid Phone number" ForeColor="Red" ControlToValidate="contact" ValidationExpression="^[01]?[- .]?(\([2-9]\d{2}\)|[2-9]\d{2})[- .]?\d{3}[- .]?\d{4}$" ></asp:RegularExpressionValidator> 
                                     </div>
 
                                     <div class="">

@@ -44,7 +44,7 @@
             </table>
         </LayoutTemplate>
     </asp:ListView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HotelDbConnectionString %>" SelectCommand="SELECT * FROM [Menu]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HotelDbConnectionString %>" SelectCommand="SELECT * FROM [Menu] order by Cast(ItemId as int)"></asp:SqlDataSource>
 
        
 

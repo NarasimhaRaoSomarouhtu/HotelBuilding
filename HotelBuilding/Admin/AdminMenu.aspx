@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3 class="display-6">Menu Page</h3>
     <br />
+
     <asp:ListView ID="ListView1" runat="server" DataKeyNames="ItemId" DataSourceID="SqlDataSource1" InsertItemPosition="LastItem">
         <AlternatingItemTemplate>
             <tr style="">
@@ -47,16 +48,31 @@
         <InsertItemTemplate>
             <tr style="">
                 <td>
-                    <asp:TextBox ID="ItemIdTextBox" class="form-control" runat="server" Text='<%# Bind("ItemId") %>' />
+                    <asp:TextBox CausesValidation="false" ID="ItemIdTextBox" class="form-control" runat="server" Text='<%# Bind("ItemId") %>' />
+                    <asp:RequiredFieldValidator id="RequiredFieldValidator1" runat="server"
+                      ControlToValidate="ItemIdTextBox"
+                      ErrorMessage="Item Id is required."
+                      ForeColor="Red">
+                    </asp:RequiredFieldValidator>
                 </td>
                 <td>
-                    <asp:TextBox ID="ItemNameTextBox" class="form-control" runat="server" Text='<%# Bind("ItemName") %>' />
+                    <asp:TextBox CausesValidation="false" ID="ItemNameTextBox" class="form-control" runat="server" Text='<%# Bind("ItemName") %>' />
+                    <asp:RequiredFieldValidator id="RequiredFieldValidator2" runat="server"
+                      ControlToValidate="ItemNameTextBox"
+                      ErrorMessage="Item Name is required."
+                      ForeColor="Red">
+                    </asp:RequiredFieldValidator>
                 </td>
                 <td>
-                    <asp:TextBox ID="ItemPriceTextBox" class="form-control" runat="server" Text='<%# Bind("ItemPrice") %>' />
+                    <asp:TextBox CausesValidation="false" ID="ItemPriceTextBox" class="form-control" runat="server" Text='<%# Bind("ItemPrice") %>' />
+                    <asp:RequiredFieldValidator id="RequiredFieldValidator3" runat="server"
+                      ControlToValidate="ItemPriceTextBox"
+                      ErrorMessage="Item Price is required."
+                      ForeColor="Red">
+                    </asp:RequiredFieldValidator>
                 </td>
                 <td>
-                    <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" CssClass="btn btn-primary"/>
+                    <asp:Button ID="InsertButton" runat="server" OnClick="checkValidation" Text="Insert" CssClass="btn btn-primary"/>
                     <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" CssClass="btn btn-secondary" />
                 </td>
             </tr>
@@ -110,7 +126,7 @@
             </tr>
         </SelectedItemTemplate>
     </asp:ListView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:HotelDbConnectionString %>" DeleteCommand="DELETE FROM [Menu] WHERE [ItemId] = @original_ItemId AND [ItemName] = @original_ItemName AND [ItemPrice] = @original_ItemPrice" InsertCommand="INSERT INTO [Menu] ([ItemId], [ItemName], [ItemPrice]) VALUES (@ItemId, @ItemName, @ItemPrice)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Menu]" UpdateCommand="UPDATE [Menu] SET [ItemName] = @ItemName, [ItemPrice] = @ItemPrice WHERE [ItemId] = @original_ItemId AND [ItemName] = @original_ItemName AND [ItemPrice] = @original_ItemPrice">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:HotelDbConnectionString %>" DeleteCommand="DELETE FROM [Menu] WHERE [ItemId] = @original_ItemId AND [ItemName] = @original_ItemName AND [ItemPrice] = @original_ItemPrice" InsertCommand="INSERT INTO [Menu] ([ItemId], [ItemName], [ItemPrice]) VALUES (@ItemId, @ItemName, @ItemPrice)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Menu] order by Cast(ItemId as int) " UpdateCommand="UPDATE [Menu] SET [ItemName] = @ItemName, [ItemPrice] = @ItemPrice WHERE [ItemId] = @original_ItemId AND [ItemName] = @original_ItemName AND [ItemPrice] = @original_ItemPrice">
         <DeleteParameters>
             <asp:Parameter Name="original_ItemId" Type="String" />
             <asp:Parameter Name="original_ItemName" Type="String" />
@@ -129,5 +145,6 @@
             <asp:Parameter Name="original_ItemPrice" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
+    <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
 &nbsp;
 </asp:Content>
