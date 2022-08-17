@@ -49,27 +49,12 @@
             <tr style="">
                 <td>
                     <asp:TextBox CausesValidation="false" ID="ItemIdTextBox" class="form-control" runat="server" Text='<%# Bind("ItemId") %>' />
-                    <asp:RequiredFieldValidator id="RequiredFieldValidator1" runat="server"
-                      ControlToValidate="ItemIdTextBox"
-                      ErrorMessage="Item Id is required."
-                      ForeColor="Red">
-                    </asp:RequiredFieldValidator>
                 </td>
                 <td>
                     <asp:TextBox CausesValidation="false" ID="ItemNameTextBox" class="form-control" runat="server" Text='<%# Bind("ItemName") %>' />
-                    <asp:RequiredFieldValidator id="RequiredFieldValidator2" runat="server"
-                      ControlToValidate="ItemNameTextBox"
-                      ErrorMessage="Item Name is required."
-                      ForeColor="Red">
-                    </asp:RequiredFieldValidator>
                 </td>
                 <td>
                     <asp:TextBox CausesValidation="false" ID="ItemPriceTextBox" class="form-control" runat="server" Text='<%# Bind("ItemPrice") %>' />
-                    <asp:RequiredFieldValidator id="RequiredFieldValidator3" runat="server"
-                      ControlToValidate="ItemPriceTextBox"
-                      ErrorMessage="Item Price is required."
-                      ForeColor="Red">
-                    </asp:RequiredFieldValidator>
                 </td>
                 <td>
                     <asp:Button ID="InsertButton" runat="server" OnClick="checkValidation" Text="Insert" CssClass="btn btn-primary"/>
