@@ -11,7 +11,7 @@
         }
     </script>
 
-    <h3>Billing History</h3>
+    <h3 style="color:brown">Billing History</h3>
     <br />
     <asp:ListView ID="ListView1" runat="server">
         <EmptyDataTemplate>
@@ -20,7 +20,7 @@
         <ItemTemplate>
             <tr style="">
                 <td>
-                    <asp:Label ID="DateLabel" runat="server" Text='<%# Eval("Date") %>' />
+                    <asp:Label ID="DateLabel" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Date", "{0:dd-MM-yyyy}") %>' />
                 </td>
                 <td>
                     <asp:Label ID="Total_PriceLabel" runat="server" Text='<%# Eval("[Total Price]") %>' />
@@ -47,7 +47,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title">Order Details</h3>
+            <h3 class="modal-title" style="color:brown">Order Details</h3>
           </div>
           <div id="modalBody" runat="server" class="modal-body"></div>
           <div class="modal-footer">

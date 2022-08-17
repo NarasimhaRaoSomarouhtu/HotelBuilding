@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UserSite.Master" AutoEventWireup="true" CodeBehind="UserMenu.aspx.cs" Inherits="HotelBuilding.User.UserMenu" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h3>Menu Page</h3>
+    <h3 style="color:brown" >Menu Page</h3>
     <br />
     <asp:ListView ID="ListView1" runat="server" DataKeyNames="ItemId" DataSourceID="SqlDataSource1">
         <EmptyDataTemplate>
@@ -11,37 +11,24 @@
             </table>
         </EmptyDataTemplate>
         <ItemTemplate>
-            <tr style="">
-                <th>
-                    <asp:Label ID="ItemIdLabel" runat="server" Text='<%# Eval("ItemId") %>' />
-                </th>
-                <td>
-                    <asp:Label ID="ItemNameLabel" runat="server" Text='<%# Eval("ItemName") %>' />
-                </td>
-                <td>
-                    <asp:Label ID="ItemPriceLabel" runat="server" Text='<%# Eval("ItemPrice") %>' />
-                </td>
-                <td runat="server">
-                    <input id="Quantity" runat="server" type="number" min="0" value="0" style="max-width:60px"/>
-                </td>
-                <td runat="server" onclick="addToCart">
-                    <asp:Button runat="server" OnClick="addToCart" Text="Add To Cart" CssClass="btn btn-success" />
-                </td>
-            </tr>
+            <div class="col-md-4 mx-2 mb-3 card" style="max-width: 30rem;">
+                <img src='<%# Eval("ItemImage") %>' class="card-img-top" style="height: 25rem; " alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Item Name: <asp:Label ID="ItemNameLabel" runat="server" Text='<%# Eval("ItemName") %>' /></h5>
+                    <p class="card-text">
+                        Item Price: <asp:Label ID="ItemPriceLabel" runat="server" Text='<%# Eval("ItemPrice") %>' /> <br />
+                        <input id="Quantity" class="form-control" runat="server" type="number" min="0" value="0" style="max-width:60px"/>
+                        <asp:Label ID="ItemIdLabel" runat="server" Text='<%# Eval("ItemId") %>' Visible="false"/>
+                    </p>
+                    <asp:Button ID="cartButton" runat="server" OnClick="addToCart" Text="Add To Cart" CssClass="btn btn-primary"/>
+                </div>
+            </div>
+
         </ItemTemplate>
         <LayoutTemplate>
-            <table id="itemPlaceholderContainer" runat="server" class="table" border="0" style="">
-                <thead class="thead-dark">
-                    <tr style="">
-                        <th scope="col">S.No</th>
-                        <th scope="col">Item</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                    </tr>
-                </thead>
-                <tr id="itemPlaceholder" runat="server">
-                </tr>
-            </table>
+            <div id="itemPlaceholderContainer" class="row justify-content-center" runat="server" border="0" style="">
+                <div id="itemPlaceholder" runat="server"></div>
+            </div>
         </LayoutTemplate>
     </asp:ListView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HotelDbConnectionString %>" SelectCommand="SELECT * FROM [Menu] order by Cast(ItemId as int)"></asp:SqlDataSource>

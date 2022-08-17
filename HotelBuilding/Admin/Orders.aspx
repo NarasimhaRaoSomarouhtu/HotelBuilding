@@ -11,7 +11,7 @@
         }
     </script>
 
-    <h3>Orders Page</h3>
+    <h3 style="color:brown">Orders Page</h3>
     <br />
 
     <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
@@ -21,7 +21,7 @@
         <ItemTemplate>
             <tr style="">
                 <td>
-                    <asp:Label ID="OrderDateLabel" runat="server" Text='<%# Eval("OrderDate") %>' />
+                    <asp:Label ID="OrderDateLabel" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OrderDate", "{0:dd-MM-yyyy}") %>' />
                 </td>
                 <td>
                     <asp:Label ID="UsernameLabel" runat="server" Text='<%# Eval("Username") %>' />
@@ -53,7 +53,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title">Order Details</h3>
+            <h3 style="color:brown" class="modal-title">Order Details</h3>
           </div>
           <div id="modalBody" runat="server" class="modal-body"></div>
           <div class="modal-footer">
@@ -63,6 +63,6 @@
       </div>
     </div>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HotelDbConnectionString %>" SelectCommand="SELECT Orders.OrderDate, Orders.Username, SUM(CAST(Menu.ItemPrice AS int) * CAST(Orders.Quantity AS int)) AS 'Total Price' FROM Menu INNER JOIN Orders ON Menu.ItemId = Orders.ItemId GROUP BY Orders.OrderDate, Orders.Username"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:HotelDbConnectionString %>" SelectCommand="SELECT Orders.OrderDate, Orders.Username, SUM(CAST(Menu.ItemPrice AS int) * CAST(Orders.Quantity AS int)) AS 'Total Price' FROM Menu INNER JOIN Orders ON Menu.ItemId = Orders.ItemId GROUP BY Orders.Username , Orders.OrderDate"></asp:SqlDataSource>
 
 </asp:Content>

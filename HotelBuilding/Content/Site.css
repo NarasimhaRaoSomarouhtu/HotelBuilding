@@ -30,3 +30,15 @@ textarea {
     }
 }
 
+.nav,navbar-nav {
+    position: relative !important;
+}
+
+.brand {
+    position: absolute !important;
+    left: 50%;
+    margin-left: -50px !important; /* 50% of your logo width */
+    display: block;
+}
+
+

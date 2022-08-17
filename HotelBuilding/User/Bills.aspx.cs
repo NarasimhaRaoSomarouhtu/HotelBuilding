@@ -69,17 +69,20 @@ namespace HotelBuilding.User
 
                 reader.Close();
 
-                string TotalQry = "select Sum(Cast(ItemPrice as int) * Cast(Quantity as int)) 'Total Price' from Menu inner join Orders on Menu.ItemId = Orders.ItemId where [Username] = @Username ";
+                string TotalQry = "select Sum(Cast(ItemPrice as int) * Cast(Quantity as int)) 'Total Price' from Menu inner join Orders on Menu.ItemId = Orders.ItemId where [Username] = @Username and OrderDate = @Date; ";
 
                 SqlCommand cmd2 = new SqlCommand(TotalQry, con);
 
                 cmd2.Parameters.AddWithValue("Username", Session["Username"].ToString());
+                cmd2.Parameters.AddWithValue("Date", trueDate);
+
 
                 SqlDataReader reader2 = cmd2.ExecuteReader();
 
                 while (reader2.Read())
                 {
-                    modalBody.InnerHtml = modalBody.InnerHtml + "Grand Total : " + reader2["Total Price"];
+                    modalBody.InnerHtml = modalBody.InnerHtml + "Total Price : " + reader2["Total Price"];
+                    //modalBody.Style.Add(HtmlTextWriterStyle.Color, "brown");
                 }
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "callFunction", "showModal();", true);

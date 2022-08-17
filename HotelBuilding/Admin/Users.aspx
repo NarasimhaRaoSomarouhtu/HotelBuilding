@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminSite.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="HotelBuilding.Admin.Users" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h3 class="display-6">Users Page</h3>
+    <h3 style="color:brown" class="display-6">Users Page</h3>
     <br />
     <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1">
         <AlternatingItemTemplate>

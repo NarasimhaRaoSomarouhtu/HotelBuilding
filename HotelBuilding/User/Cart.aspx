@@ -12,7 +12,7 @@
         }
     </script>
 
-    <h3>Cart Page</h3>
+    <h3 style="color:brown" >Cart Page</h3>
     <br />
     <asp:ListView ID="ListView1" runat="server" DataKeyNames="ItemId" DataSourceID="SqlDataSource1">
         <EmptyDataTemplate>
@@ -48,6 +48,7 @@
                             <th scope="col">Item</th>
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tr id="itemPlaceholder" runat="server">
@@ -59,12 +60,10 @@
     <div id="totalPriceLabel" runat="server"></div>
     <br />
 
-    <asp:Button ID="OrderButton" runat="server" OnClick="ConfirmOrder" Text="Proceed To Checkout" CssClass="btn btn-info" />
-    <asp:Label ID="OrderStatus" runat="server" Text="Label" Visible="false"></asp:Label>
+    <asp:Button ID="OrderButton" runat="server" OnClick="ConfirmOrder" Text="Proceed To Checkout" CssClass="btn btn-primary" />
 
     <br />
     <br />
-
 
     <div class="alert alert-info" id="popup" runat="server" role="alert">
         Order Successful..!!

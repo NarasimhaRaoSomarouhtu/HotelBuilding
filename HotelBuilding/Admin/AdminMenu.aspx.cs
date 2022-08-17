@@ -36,13 +36,13 @@ namespace HotelBuilding.Admin
                     Debug.WriteLine(ItemTb.Text);
                     con.Open();
 
-                    string query = "select * from Menu where ItemId=@ItemId";
+                    string query = "select * from Menu where ItemId=@ItemId or ItemName=@ItemName; ";
 
                     SqlCommand cmd = new SqlCommand(query, con);
 
-
-
                     cmd.Parameters.AddWithValue("ItemId", ItemTb.Text);
+                    cmd.Parameters.AddWithValue("ItemName", NameTb.Text);
+
 
                     var temp = cmd.ExecuteScalar();
 

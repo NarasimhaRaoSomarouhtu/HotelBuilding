@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,7 +13,7 @@ namespace HotelBuilding.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void btn_Click(object sender, EventArgs e)
