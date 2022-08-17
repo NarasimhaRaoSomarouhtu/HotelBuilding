@@ -38,7 +38,7 @@ namespace HotelBuilding.User
                         if (reader["Total"].ToString() != "")
                         {
                             totalPrice = reader["Total"].ToString();
-                            totalPriceLabel.InnerHtml = "Total Price : " + reader["Total"].ToString();
+                            totalPriceLabel.InnerHtml = "Total Amount: " + reader["Total"].ToString();
 
                             OrderButton.Visible = true;
                         }
@@ -106,6 +106,9 @@ namespace HotelBuilding.User
             }
 
             popup.Visible = true;
+            OrderStatus.Visible = true;
+            OrderStatus.Text = "Order Placed Successfully ";
+            OrderStatus.ForeColor = System.Drawing.Color.Green;
 
             var t = Task.Run(async delegate
             {

@@ -30,7 +30,7 @@
                     <asp:Label ID="Total_PriceLabel" runat="server" Text='<%# Eval("[Total Price]") %>' />
                 </td>
                 <td runat="server">
-                    <asp:Button runat="server" class="btn btn-info" onclick="btn_Click" Text="View Details" ></asp:Button>
+                    <asp:Button runat="server" class="btn btn-link" onclick="btn_Click" Text="View Details" ></asp:Button>
                 </td>
             </tr>
         </ItemTemplate>

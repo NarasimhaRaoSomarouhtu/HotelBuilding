@@ -47,10 +47,12 @@
     <div id="totalPriceLabel" runat="server"></div>
     <br />
 
-    <asp:Button ID="OrderButton" runat="server" OnClick="ConfirmOrder" Text="Proceed To Checkout" CssClass="btn btn-secondary" />
+    <asp:Button ID="OrderButton" runat="server" OnClick="ConfirmOrder" Text="Proceed To Checkout" CssClass="btn btn-info" />
+    <asp:Label ID="OrderStatus" runat="server" Text="Label" Visible="false"></asp:Label>
 
     <br />
     <br />
+
 
     <div class="alert alert-info" id="popup" runat="server" role="alert">
         Order Successful..!!

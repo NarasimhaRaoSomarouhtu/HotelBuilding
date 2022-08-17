@@ -79,7 +79,7 @@ namespace HotelBuilding.User
 
                 while (reader2.Read())
                 {
-                    modalBody.InnerHtml = modalBody.InnerHtml + "Total Price : " + reader2["Total Price"];
+                    modalBody.InnerHtml = modalBody.InnerHtml + "Grand Total : " + reader2["Total Price"];
                 }
 
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);

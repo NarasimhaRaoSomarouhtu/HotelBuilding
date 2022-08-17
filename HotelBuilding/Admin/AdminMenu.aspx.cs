@@ -62,7 +62,7 @@ namespace HotelBuilding.Admin
                 else
                 {
                     Label1.Visible = true;
-                    Label1.Text = "Please fill the details.";
+                    Label1.Text = "Please fill the Item details.";
                     Label1.ForeColor = System.Drawing.Color.Red;
                 }
 

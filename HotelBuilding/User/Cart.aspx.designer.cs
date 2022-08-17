@@ -42,6 +42,15 @@ namespace HotelBuilding.User
         protected global::System.Web.UI.WebControls.Button OrderButton;
 
         /// <summary>
+        /// OrderStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label OrderStatus;
+
+        /// <summary>
         /// popup control.
         /// </summary>
         /// <remarks>
