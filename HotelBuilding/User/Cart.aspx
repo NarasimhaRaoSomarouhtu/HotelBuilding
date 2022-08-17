@@ -1,5 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UserSite.Master" AutoEventWireup="true" CodeBehind="Cart.aspx.cs" Inherits="HotelBuilding.User.Cart" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <script>
+        function reloadWindow() {
+            setTimeout(function () {
+                if (window.location.hash != '#r') {
+                    window.location.hash = 'r';
+                    window.location.replace("http://localhost:54753/User/Cart");
+                }
+            }, 5000);
+        }
+    </script>
+
     <h3>Cart Page</h3>
     <br />
     <asp:ListView ID="ListView1" runat="server" DataKeyNames="ItemId" DataSourceID="SqlDataSource1">
