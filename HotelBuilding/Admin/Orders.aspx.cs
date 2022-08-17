@@ -26,7 +26,7 @@ namespace HotelBuilding.Admin
 
             using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=HotelDb; integrated security=True;"))
             {
-                string DetailsQry = "select *, Cast(ItemPrice as int) * Cast(Quantity as int) as 'Total Price' from Menu inner join Orders on Menu.ItemId = Orders.ItemId where [Username] = @Username and OrderDate = @Date;";
+                string DetailsQry = "select ItemName, ItemPrice, Quantity, Cast(ItemPrice as int) * Cast(Quantity as int) as 'Total Price' from Menu inner join Orders on Menu.ItemId = Orders.ItemId where [Username] = @Username and OrderDate = @Date;";
 
                 con.Open();
 
@@ -45,11 +45,12 @@ namespace HotelBuilding.Admin
 
                 reader.Close();
 
-                string TotalQry = "select Sum(Cast(ItemPrice as int) * Cast(Quantity as int)) 'Total Price' from Menu inner join Orders on Menu.ItemId = Orders.ItemId where [Username] = @Username ";
+                string TotalQry = "select Sum(Cast(ItemPrice as int) * Cast(Quantity as int)) 'Total Price' from Menu inner join Orders on Menu.ItemId = Orders.ItemId where [Username] = @Username and OrderDate=@Date";
 
                 SqlCommand cmd2 = new SqlCommand(TotalQry, con);
 
                 cmd2.Parameters.AddWithValue("Username", NameLabel.Text);
+                cmd2.Parameters.AddWithValue("Date", trueDate);
 
                 SqlDataReader reader2 = cmd2.ExecuteReader();
 
