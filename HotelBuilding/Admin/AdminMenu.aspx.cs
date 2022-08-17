@@ -55,6 +55,7 @@ namespace HotelBuilding.Admin
                     else
                     {
                         btn.CommandName = "Insert";
+                        Label1.Visible = false;
                     }
 
                     con.Close();

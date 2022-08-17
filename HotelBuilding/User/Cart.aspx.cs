@@ -110,13 +110,9 @@ namespace HotelBuilding.User
             OrderStatus.Text = "Order Placed Successfully ";
             OrderStatus.ForeColor = System.Drawing.Color.Green;
 
-            var t = Task.Run(async delegate
-            {
-                await Task.Delay(3000);
-            });
-            t.Wait();
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "reloadWindow();", true);
 
-            Response.Redirect(Request.RawUrl);
+            //Response.Redirect(Request.RawUrl);
         }
 
     }
