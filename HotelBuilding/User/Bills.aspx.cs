@@ -21,7 +21,7 @@ namespace HotelBuilding.User
                 {
                     con.Open();
 
-                    string query = "SELECT Orders.OrderDate AS 'Date', SUM(CAST(Menu.ItemPrice AS int) * CAST(Orders.Quantity AS int)) AS 'Total Price' FROM Menu INNER JOIN Orders ON Menu.ItemId = Orders.ItemId where Username=@Username GROUP BY Orders.OrderDate";
+                    string query = "SELECT Orders.OrderDate AS 'Date', SUM(CAST(Menu.ItemPrice AS int) * CAST(Orders.Quantity AS int)) AS 'Total Price' FROM Menu INNER JOIN Orders ON Menu.ItemId = Orders.ItemId where Username=@Username GROUP BY Orders.OrderDate ORDER BY Orders.OrderDate DESC;";
 
                     SqlCommand cmd = new SqlCommand(query, con);
 
