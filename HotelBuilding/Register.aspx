@@ -21,13 +21,13 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-10 col-xl-7 mx-auto">
-                                <h3 class="display-4">Welcome To New User</h3>
+                                <h3 class="display-4">Welcome, User. </h3>
                                 <p class="tagline mb-4">Please Enter Your Details</p>
 
                                 <form class="" runat="server">
                                     <div class="">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" runat="server" id="username" required="required" />
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" runat="server" id="username" required="required" />
                                     </div>
 
                                     <div class="">
@@ -37,8 +37,15 @@
                                     </div>
 
                                     <div class="">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" runat="server" class="form-control" id="password" required="required"/>
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" runat="server" class="form-control" id="password" required="required"/>
+                                
+                                        <div style="padding:5px 0">
+                                            <p class="text-muted" style="margin-bottom:0; font-size:14px;">
+                                                <input type="checkbox" id="togglePassword" /> 
+                                                    Show Password
+                                            </p>
+                                        </div>
                                     </div>
   
                                     <div class="">
@@ -67,6 +74,19 @@
 
         </div>
     </div>
+
+    <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
+
+        togglePassword.addEventListener("click", function () {
+            // toggle the type attribute
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+        });
+
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>

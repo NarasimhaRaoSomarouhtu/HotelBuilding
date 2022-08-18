@@ -5,6 +5,15 @@
 * ==========================================
 *
 */
+
+#root{
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    min-width:100vw;
+}
+
 .login,
 .image {
     min-height: 100vh;
@@ -22,6 +31,11 @@ h3{
 .bg-image {
     background-image: url('https://thumbs.dreamstime.com/b/south-indian-platter-idli-dosa-vada-idli-dosa-vada-banana-leaf-south-indian-breakfast-tea-time-snack-171494106.jpg');
     background-repeat: no-repeat;
+}
+
+form i {
+    margin-left: -30px;
+    cursor: pointer;
 }
 
 
