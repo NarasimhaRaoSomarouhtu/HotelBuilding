@@ -13,7 +13,7 @@ namespace HotelBuilding.User
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session != null && (Boolean)Session["UserPresent"] != true)
+            if (Session["UserPresent"] == null || (Boolean)Session["UserPresent"] != true)
             {
                 Response.Redirect("../Login.aspx");
             }

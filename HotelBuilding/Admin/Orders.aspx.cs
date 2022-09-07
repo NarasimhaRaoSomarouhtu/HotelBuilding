@@ -13,7 +13,10 @@ namespace HotelBuilding.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["UserPresent"] == null || (Boolean)Session["UserPresent"] != true)
+            {
+                Response.Redirect("../Login.aspx");
+            }
         }
 
         protected void btn_Click(object sender, EventArgs e)

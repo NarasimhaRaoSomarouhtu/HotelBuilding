@@ -15,7 +15,7 @@ namespace HotelBuilding.User
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (!Page.IsPostBack && Session["UserPresent"] != null && (Boolean)Session["UserPresent"] == true)
             {
                 using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=HotelDb; integrated security=True;"))
                 {
@@ -44,52 +44,51 @@ namespace HotelBuilding.User
 
         protected void btn_Click(object sender, EventArgs e)
         {
+            Debug.WriteLine("function called");
+            Button btn = (Button)sender;
+            Label DateLabel = (Label)btn.Parent.FindControl("DateLabel");
 
-                Debug.WriteLine("function called");
-                Button btn = (Button)sender;
-                Label DateLabel = (Label)btn.Parent.FindControl("DateLabel");
+            DateTime trueDate = DateTime.Parse(DateLabel.Text);
 
-                DateTime trueDate = DateTime.Parse(DateLabel.Text);
+            using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=HotelDb; integrated security=True;"))
+            {
+                string DetailsQry = "select ItemName, ItemPrice, Quantity, Cast(ItemPrice as int) * Cast(Quantity as int) as 'Total Price' from Menu inner join Orders on Menu.ItemId = Orders.ItemId where [Username] = @Username and OrderDate = @Date;";
 
-                using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=HotelDb; integrated security=True;"))
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand(DetailsQry, con);
+
+                cmd.Parameters.AddWithValue("Username", Session["Username"].ToString());
+                cmd.Parameters.AddWithValue("Date", trueDate);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    string DetailsQry = "select ItemName, ItemPrice, Quantity, Cast(ItemPrice as int) * Cast(Quantity as int) as 'Total Price' from Menu inner join Orders on Menu.ItemId = Orders.ItemId where [Username] = @Username and OrderDate = @Date;";
-
-                    con.Open();
-
-                    SqlCommand cmd = new SqlCommand(DetailsQry, con);
-
-                    cmd.Parameters.AddWithValue("Username", Session["Username"].ToString());
-                    cmd.Parameters.AddWithValue("Date", trueDate);
-
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        modalBody.InnerHtml = modalBody.InnerHtml + "Item : " + reader["ItemName"].ToString() + "<br />Item Price : " + reader["ItemPrice"].ToString() + "<br/>Quantity : " + reader["Quantity"] + "<br/>Total Price : " + reader["Total Price"];
-                        modalBody.InnerHtml = modalBody.InnerHtml + "<hr />";
-                    }
-
-                    reader.Close();
-
-                    string TotalQry = "select Sum(Cast(ItemPrice as int) * Cast(Quantity as int)) 'Total Price' from Menu inner join Orders on Menu.ItemId = Orders.ItemId where [Username] = @Username and OrderDate = @Date; ";
-
-                    SqlCommand cmd2 = new SqlCommand(TotalQry, con);
-
-                    cmd2.Parameters.AddWithValue("Username", Session["Username"].ToString());
-                    cmd2.Parameters.AddWithValue("Date", trueDate);
-
-
-                    SqlDataReader reader2 = cmd2.ExecuteReader();
-
-                    while (reader2.Read())
-                    {
-                        modalBody.InnerHtml = modalBody.InnerHtml + "Grand Total : " + reader2["Total Price"];
-                        //modalBody.Style.Add(HtmlTextWriterStyle.Color, "brown");
-                    }
-
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "callFunction", "showModal();", true);
+                    modalBody.InnerHtml = modalBody.InnerHtml + "Item : " + reader["ItemName"].ToString() + "<br />Item Price : " + reader["ItemPrice"].ToString() + "<br/>Quantity : " + reader["Quantity"] + "<br/>Total Price : " + reader["Total Price"];
+                    modalBody.InnerHtml = modalBody.InnerHtml + "<hr />";
                 }
+
+                reader.Close();
+
+                string TotalQry = "select Sum(Cast(ItemPrice as int) * Cast(Quantity as int)) 'Total Price' from Menu inner join Orders on Menu.ItemId = Orders.ItemId where [Username] = @Username and OrderDate = @Date; ";
+
+                SqlCommand cmd2 = new SqlCommand(TotalQry, con);
+
+                cmd2.Parameters.AddWithValue("Username", Session["Username"].ToString());
+                cmd2.Parameters.AddWithValue("Date", trueDate);
+
+
+                SqlDataReader reader2 = cmd2.ExecuteReader();
+
+                while (reader2.Read())
+                {
+                    modalBody.InnerHtml = modalBody.InnerHtml + "Grand Total : " + reader2["Total Price"];
+                    //modalBody.Style.Add(HtmlTextWriterStyle.Color, "brown");
+                }
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "callFunction", "showModal();", true);
+            }
             
         }
     }

@@ -1,13 +1,11 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
 
 namespace HotelBuilding
 {
@@ -16,13 +14,13 @@ namespace HotelBuilding
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";
-            //Session["UserPresent"] = false;
             var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
             if (!String.IsNullOrEmpty(returnUrl))
             {
                 RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
             }
         }
+
         protected void loginUser(object sender, EventArgs e)
         {
             Button loginButton = (Button)sender;
@@ -50,7 +48,7 @@ namespace HotelBuilding
                         userCheckReader.Close();
 
                         string roleCheck = "select Role from Users where Username=@username";
-                        
+
                         SqlCommand roleCheckCmd = new SqlCommand(roleCheck, con);
 
                         roleCheckCmd.Parameters.AddWithValue("username", username.Value);
@@ -75,7 +73,7 @@ namespace HotelBuilding
                                     Session["Username"] = username.Value;
                                     Response.Redirect("Admin/AdminMenu.aspx");
                                 }
-           
+
                             }
                             else
                             {
@@ -84,11 +82,11 @@ namespace HotelBuilding
                                 Label1.ForeColor = System.Drawing.Color.Red;
                             }
                         }
-                        
+
                     }
                     else
                     {
-                        Label1.Visible =true ;
+                        Label1.Visible = true;
                         Label1.Text = "Invalid User Credentials";
                         Label1.ForeColor = System.Drawing.Color.Red;
 
@@ -102,5 +100,6 @@ namespace HotelBuilding
                 Response.Write(ex.Message);
             }
         }
+
     }
 }

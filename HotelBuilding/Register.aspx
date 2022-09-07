@@ -21,7 +21,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-10 col-xl-7 mx-auto">
-                                <h3 class="display-4">Welcome, User. </h3>
+                                <h3 class="display-4">Registration</h3>
                                 <p class="tagline mb-4">Please Enter Your Details</p>
 
                                 <form class="" runat="server">

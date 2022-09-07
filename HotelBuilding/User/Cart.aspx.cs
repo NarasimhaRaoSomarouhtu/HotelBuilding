@@ -16,7 +16,7 @@ namespace HotelBuilding.User
         string totalPrice;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if ((Boolean)Session["UserPresent"] == true)
+            if (Session["UserPresent"] != null && (Boolean)Session["UserPresent"] == true)
             {
                 using (SqlConnection con = new SqlConnection(@"Data Source=.; initial catalog=HotelDb; integrated security=True;"))
                 {
@@ -106,9 +106,6 @@ namespace HotelBuilding.User
             }
 
             popup.Visible = true;
-            OrderStatus.Visible = true;
-            OrderStatus.Text = "Order Placed Successfully ";
-            OrderStatus.ForeColor = System.Drawing.Color.Green;
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "reloadWindow();", true);
 
