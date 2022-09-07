@@ -11,7 +11,9 @@ namespace HotelBuilding
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["UserPresent"] = false;
+            //Session["UserPresent"] = false;
+            //Session.Remove("UserPresent");
+            Session.Clear();
             Response.Redirect("Login.aspx");
         }
     }
